@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [03/Feb/2021:08:47:49 +0300] "POST /controller HTTP/1.1" 302 - http-bio-8080-exec-5 5007
+0:0:0:0:0:0:0:1 - - [03/Feb/2021:08:47:50 +0300] "GET /jsp/register.jsp HTTP/1.1" 200 1031 http-bio-8080-exec-5 1071
