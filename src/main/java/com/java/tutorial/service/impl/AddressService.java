@@ -70,7 +70,7 @@ public class AddressService implements Service<Address> {
     }
 
     @Override
-    public Address createByLogin(String login, String password) throws ServiceException {
+    public List<Address> createByLogin(String login, String password) throws ServiceException {
         return null;
     }
 }

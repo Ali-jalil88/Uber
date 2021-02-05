@@ -6,7 +6,7 @@ create table account
     login      varchar(255),
     password   varchar(255),
     email      varchar(50),
-    type       varchar(50)
+    "type"       varchar(50)
 );
 
 create table address

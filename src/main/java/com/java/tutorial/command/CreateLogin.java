@@ -24,10 +24,6 @@ public class CreateLogin implements Command{
 //       account.setFirstName(req.getParameter(""));
 //       account.setLastName(req.getParameter(""));
 //       account.setEmail(req.getParameter(""));
-       account.setType(req.getParameter("client"));
-       address.setNameStreet(req.getParameter("baghdad"));
-       address.setNumberStreet(Integer.parseInt(req.getParameter("1")));
-
         System.out.println(account.getLogin() + account.getPassword());
        accountService.createByLogin(account.getLogin(), account.getPassword());
         System.out.println(accountService.createByLogin(account.getLogin(), account.getPassword()));

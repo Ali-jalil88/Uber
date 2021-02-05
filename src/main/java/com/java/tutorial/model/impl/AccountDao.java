@@ -1,6 +1,7 @@
 package com.java.tutorial.model.impl;
 
 import com.java.tutorial.entities.Account;
+import com.java.tutorial.entities.UserType;
 import com.java.tutorial.exception.DaoException;
 import com.java.tutorial.model.Repository;
 
@@ -31,7 +32,7 @@ public class AccountDao implements Repository<Account> {
             statement.setString(3, entity.getLogin());
             statement.setString(4, entity.getPassword());
             statement.setString(5, entity.getEmail());
-            statement.setString(6,entity.getType());
+            statement.setString(6,entity.getType().toString());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("account can't insert");
@@ -52,7 +53,7 @@ public class AccountDao implements Repository<Account> {
                 account.setPassword(resultSet.getString("password"));
                 account.setLogin(resultSet.getString("login"));
                 account.setEmail(resultSet.getString("email"));
-                account.setType(resultSet.getString("type"));
+                account.setType(UserType.valueOf(resultSet.getString("type")));
                 accounts.add(account);
             }
             return accounts;
@@ -77,7 +78,7 @@ public class AccountDao implements Repository<Account> {
                 account.setPassword(resultSet.getString("password"));
                 account.setFirstName(resultSet.getString("first_name"));
                 account.setLastName(resultSet.getString("last_name"));
-                account.setType(resultSet.getString("type"));
+                account.setType(UserType.valueOf(resultSet.getString("type")));
                 account.setEmail(resultSet.getString("email"));
                 return account;
             }
@@ -100,7 +101,7 @@ public class AccountDao implements Repository<Account> {
                 account.setPassword(resultSet.getString("password"));
                 account.setLogin(resultSet.getString("login"));
                 account.setEmail(resultSet.getString("email"));
-                account.setType(resultSet.getString("type"));
+                account.setType(UserType.valueOf(resultSet.getString("type")));
                 return account;
             }
         } catch (SQLException throwables) {
@@ -120,7 +121,7 @@ public class AccountDao implements Repository<Account> {
             statement.setString(3, entity.getLogin());
             statement.setString(4, entity.getPassword());
             statement.setString(5, entity.getEmail());
-            statement.setString(6,entity.getType());
+            statement.setString(6,entity.getType().toString());
             statement.setLong(7,entity.getId());
             int i = statement.executeUpdate();
             if (i==1){

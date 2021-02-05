@@ -68,7 +68,7 @@ public class OrderService implements Service<Order> {
     }
 
     @Override
-    public Order createByLogin(String login, String password) throws ServiceException {
+    public List<Order> createByLogin(String login, String password) throws ServiceException {
         return null;
     }
 }

@@ -9,7 +9,7 @@ public class Account  {
     private String login;
     private String password;
     private String email;
-    private String type;
+    private UserType type = UserType.CLIENT;
 
     public long getId() {
         return id;
@@ -59,11 +59,11 @@ public class Account  {
         this.email = email;
     }
 
-    public String getType() {
+    public UserType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(UserType type) {
         this.type = type;
     }
 
@@ -78,7 +78,7 @@ public class Account  {
                 Objects.equals(login, account.login) &&
                 Objects.equals(password, account.password) &&
                 Objects.equals(email, account.email) &&
-                Objects.equals(type, account.type);
+                type == account.type;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Account  {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", type='" + type + '\'' +
+                ", type=" + type +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.java.tutorial.command;
 
 import com.java.tutorial.entities.Account;
+import com.java.tutorial.entities.UserType;
 import com.java.tutorial.exception.ServiceException;
 import com.java.tutorial.service.Service;
 import com.java.tutorial.service.impl.AccountService;
@@ -23,7 +24,7 @@ public class CreateAccount implements Command{
         account.setLogin(req.getParameter("login"));
         account.setPassword(req.getParameter("pass"));
         account.setEmail(req.getParameter("email"));
-        account.setType(req.getParameter("type"));
+        account.setType(UserType.valueOf(req.getParameter("type")));
         accountService.create(account);
         return page;
     }

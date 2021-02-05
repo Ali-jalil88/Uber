@@ -68,7 +68,7 @@ public class TransactionService implements Service<Transaction> {
     }
 
     @Override
-    public Transaction createByLogin(String login, String password) throws ServiceException {
+    public List <Transaction> createByLogin(String login, String password) throws ServiceException {
         return null;
     }
 }

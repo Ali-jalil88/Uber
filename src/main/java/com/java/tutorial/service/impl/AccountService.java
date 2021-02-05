@@ -1,12 +1,16 @@
 package com.java.tutorial.service.impl;
 
 import com.java.tutorial.entities.Account;
+import com.java.tutorial.entities.Address;
+import com.java.tutorial.entities.UserType;
 import com.java.tutorial.exception.DaoException;
 import com.java.tutorial.exception.ServiceException;
 import com.java.tutorial.model.Repository;
 import com.java.tutorial.model.impl.AccountDao;
+import com.java.tutorial.model.impl.AddressDao;
 import com.java.tutorial.service.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountService implements Service<Account> {
@@ -20,9 +24,12 @@ public class AccountService implements Service<Account> {
         }
     }
     @Override
-    public Account createByLogin(String login, String password) throws ServiceException {
+    public List<Account> createByLogin(String login, String password) throws ServiceException {
         try {
-                return repository.selectByLogin(login, password);
+            List<Account> accountList = new ArrayList<>();
+            accountList.addAll(repository.select());
+            Account account = repository.selectByLogin(login, password);
+            return accountListSorting(accountList, account);
         } catch (DaoException e) {
             throw new ServiceException("account can't find");
         }
@@ -33,6 +40,7 @@ public class AccountService implements Service<Account> {
     public Account read(long id) throws ServiceException {
         try {
             return repository.selectById(id);
+
         } catch (DaoException e) {
             throw new ServiceException("account can't add");
         }
@@ -74,5 +82,26 @@ public class AccountService implements Service<Account> {
         }
     }
 
+    public List<Account> accountListSorting(List<Account> accountList, Account account) {
+        if (account.getType() == UserType.ADMIN || account.getType() == UserType.CLIENT) {
+            return taxiList(accountList);
+        } else {
+            return clientList(accountList);
+        }
+    }
 
+    public List<Account> taxiList(List<Account> accountList) {
+        List<Account> taxiList = new ArrayList<>();
+        for (Account account : accountList) {
+            if (account.getType() == UserType.TAXI) taxiList.add(account);
+        }
+        return taxiList;
+    }
+
+    public List<Account> clientList(List<Account> accountList) {
+        List<Account> clientList = new ArrayList<>();
+        for (Account account : accountList)
+            if (account.getType() == UserType.CLIENT) clientList.add(account);
+        return clientList;
+    }
 }

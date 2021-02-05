@@ -1,8 +1,8 @@
 insert into account (first_name, last_name, login, password, email, type)
-values ('user', 'user', 'user', '1234', 'user@user.com', 'user'),
-       ('admin', 'admin', 'admin','1234','admin@admin', 'admin'),
-       ('client', 'client', 'client','1234','client@client', 'client'),
-       ('taxi', 'taxi', 'taxi','1234','taxi@taxi', 'taxi');
+values ('user', 'user', 'user', '1234', 'user@user.com', 'TAXI'),
+       ('admin', 'admin', 'admin','1234','admin@admin', 'ADMIN'),
+       ('client', 'client', 'client','1234','client@client', 'CLIENT'),
+       ('taxi', 'taxi', 'taxi','1234','taxi@taxi', 'TAXI');
 
 insert into address (name_street, number_street)
 values ('Baghdad', 1),

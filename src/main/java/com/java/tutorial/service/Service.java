@@ -11,6 +11,6 @@ public interface Service<T> {
     public void update (T entity) throws ServiceException;
     public void delete (T entity) throws ServiceException;
     public void deleteById (long id) throws ServiceException;
-    public T createByLogin (String login, String password) throws ServiceException;
+    public List<T> createByLogin (String login, String password) throws ServiceException;
 
 }

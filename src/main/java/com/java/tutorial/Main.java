@@ -19,26 +19,17 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        AccountService accountService = new AccountService();
-        AddressService addressService = new AddressService();
-        OrderService orderService = new OrderService();
-        TransactionService transactionService = new TransactionService();
+AccountService accountService = new AccountService();
 
-        Account account = new Account();
-        Account account1 = new Account();
-        Address address = new Address();
-        Address address1 = new Address();
-        Order order = new Order();
-        Transaction transaction = new Transaction();
-        Status status;
-        StatusTransaction statusTransaction;
-
-        try {
-            orderService.delete(order);
-            System.out.println(orderService.readAll());
-        } catch (ServiceException e){
-            e.getMessage();
-        }
+try {
+Account account = new Account();
+account.setLogin("user");
+account.setPassword("1234");
+accountService.createByLogin(account.getLogin(), account.getPassword());
+    System.out.println(accountService.createByLogin(account.getLogin(), account.getPassword()));
+} catch (ServiceException e) {
+    e.getMessage();
+}
 
 //        List<Address> addressList = new ArrayList<>();
 //        addressList = addressService.readAll();
